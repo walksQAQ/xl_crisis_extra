@@ -1,0 +1,47 @@
+namespace = xl_crisis_fleet
+
+#初始化阶段舰队触发
+country_event = {
+    id = xl_crisis_fleet.1
+    hide_window = yes
+    is_triggered_only = yes
+
+    trigger = {
+        AND = {
+            has_country_flag = xl_mid_crisis_country_main
+            NOR = {
+                has_country_flag = xl_mid_crisis_stop
+                check_variable = {
+                    which = xl_mid_crisis_start_fleet_time
+                    value < 3
+                }
+            }
+        }
+    }
+    immediate = {
+        country_event = {
+            id = xl_crisis_fleet.1
+            days = 1080
+        }
+        country_event = {
+            id = xl_crisis_fleet.10
+        }
+    }
+}
+
+#舰船生成
+country_event = {
+    id = xl_crisis_fleet.10
+    hide_window = yes
+    is_triggered_only = yes
+
+    immediate = {
+        change_variable = {
+            which = xl_mid_crisis_start_fleet_time
+            value = 1
+        }
+        xl_mid_crisis_fleet_create = {
+            MODE = 1
+        }
+    }
+}

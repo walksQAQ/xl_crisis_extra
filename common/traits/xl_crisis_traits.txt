@@ -1,0 +1,11 @@
+xl_mid_crisis_species_trait = {
+    cost = 0
+    improves_leaders = yes
+    initial = no
+    randomized = no
+    advanced_trait = no
+    valid_for_all_ethics = no
+    valid_for_all_origins = no
+
+    ai_weight = 0
+}

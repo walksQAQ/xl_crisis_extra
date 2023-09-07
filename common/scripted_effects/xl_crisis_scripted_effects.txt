@@ -1,0 +1,36 @@
+#舰队生成
+xl_mid_crisis_fleet_create = {
+    if = {
+        limit = {
+            $MODE$ = 1
+        }
+        create_fleet = {
+            name = xl_mid_crisis_fleet_1
+            settings = {
+                can_upgrade = no
+                can_change_composition = no
+                is_boss = yes
+                uses_naval_capacity = no
+                spawn_debris = no
+            }
+            effect = {
+                set_fleet_flag = is_xl_mid_crisis_event_create_fleet
+            }
+        }
+        last_created_fleet = {
+            create_ship = {
+
+            }
+        }
+    }
+    else_if = {
+        limit = {
+            $MODE$ = 2
+        }
+    }
+}
+
+#天灾科技赋予
+research_xl_mid_crisis_tech = {
+
+}

@@ -1,0 +1,3 @@
+xl_mid_crisis_country_opinion_modifier = {
+    opinion = -1000
+}

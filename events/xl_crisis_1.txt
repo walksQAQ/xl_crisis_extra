@@ -25,7 +25,11 @@ country_event = {
 		}
 		create_country = {
 			name = random
-			type =
+			type = xl_crisis_main_empire_name_save
+			auto_delete = no
+			effect = {
+				establish_communications_no_message = event_target:xl_mid_crisis_main_empire_target
+			}
 		}
 		last_created_country = {
 			set_name = {
@@ -36,6 +40,7 @@ country_event = {
 	}
 }
 
+#事件正式启动
 country_event = {
 	id = xl_crisis_1.2
 	hide_window = yes
@@ -48,10 +53,57 @@ country_event = {
 		}
 	}
 	immediate = {
+		random_country = {
+			limit = {
+				is_ai = no
+			}
+			country_event = {
+				id = xl_crisis_1.3
+			}
+		}
+		set_variable = {
+			which = xl_mid_crisis_start_fleet_time
+			value = 0
+		}
 		set_name = {
 			key = xl_mid_crisis_main_empire_name
 			variable_string = "[this.GetName]"
 		}
-
+		add_modifier = {
+			modifier = xl_mid_crisis_main_empire_modifier
+		}
+		modify_species = {
+			add_trait = xl_mid_crisis_species_trait
+		}
+		country_event = {
+			id = xl_crisis_fleet.1
+		}
+		every_country = {
+			add_opinion_modifier = {
+				modifier = xl_mid_crisis_country_opinion_modifier
+				who = event_target:xl_mid_crisis_main_empire_target
+			}
+			set_war_goal = {
+				type = xl_mid_crisis_war_type
+				target = this
+				enemy = event_target:xl_mid_crisis_main_empire_target
+			}
+		}
+		research_xl_mid_crisis_tech = yes
 	}
 }
+
+#警告事件
+country_event = {
+	id = xl_crisis_1.3
+	is_triggered_only = yes
+
+	title = xl_crisis_1.3.title
+	desc = xl_crisis_1.3.desc
+
+	option = {
+		name = xl_crisis_1.3.a
+	}
+}
+
+#天灾提前终止相关

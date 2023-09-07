@@ -1,0 +1,15 @@
+xl_mid_crisis_war_type = {
+    casus_belli = xl_mid_crisis_casus_beili
+    total_war = yes
+    cede_claims = no
+    destroy_starbases = yes
+    allowed_peace_offers = {
+
+    }
+    surrender_acceptance = -99999999
+    war_exhaustion = 0
+    threat_multiplier = 0
+    ai_weight = {
+        weight = 0
+    }
+}

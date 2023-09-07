@@ -1,0 +1,3 @@
+xl_mid_crisis_main_empire_modifier = {
+
+}
