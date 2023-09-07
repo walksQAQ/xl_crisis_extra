@@ -1,0 +1,14 @@
+namespace = xl_crisis_1
+
+#中期触发事件组
+country_event = {
+	id = xl_crisis_1.1
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		every_country = {
+			
+		}
+	}
+}
