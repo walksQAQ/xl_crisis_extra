@@ -1,0 +1,6 @@
+﻿l_simp_chinese:
+
+#其他
+xl_crisis_other_1:0 ""
+#天灾-主体
+xl_mid_crisis_main_empire_name:0 "树骸污染-[this.GetName]"

@@ -20,6 +20,17 @@ country_event = {
 					id = xl_crisis_1.2
 					days = 10800
 				}
+				save_global_event_target_as = xl_mid_crisis_main_empire_target
+			}
+		}
+		create_country = {
+			name = random
+			type =
+		}
+		last_created_country = {
+			set_name = {
+				key = xl_crisis_other_1
+				variable_string = "[event_target:xl_mid_crisis_main_empire_target.GetName]"
 			}
 		}
 	}
@@ -37,6 +48,10 @@ country_event = {
 		}
 	}
 	immediate = {
+		set_name = {
+			key = xl_mid_crisis_main_empire_name
+			variable_string = "[this.GetName]"
+		}
 
 	}
 }
