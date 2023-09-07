@@ -45,3 +45,29 @@ country_event = {
         }
     }
 }
+
+country_event = {
+    id = xl_crisis_fleet.100
+    hide_window = yes
+    is_triggered_only = yes
+    trigger = {
+        NOT = {
+            has_global_flag = xl_mid_crisis_stopped
+        }
+    }
+
+    immediate = {
+        if = {
+            limit = {
+                any_owned_fleet = {
+                    NOT = {
+                        has_fleet_flag = xl_mid_crisis_sp_fleet
+                    }
+                }
+            }
+            xl_mid_crisis_fleet_create = {
+                MODE = SP
+            }
+        }
+    }
+}

@@ -1,0 +1,12 @@
+namespace = xl_crisis_clear
+
+#净化事件总触发
+country_event = {
+    id = xl_crisis_clear.1
+    hide_window = yes
+    is_triggered_only = yes
+
+    immediate = {
+        
+    }
+}

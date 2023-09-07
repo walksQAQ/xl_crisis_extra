@@ -1,14 +1,16 @@
 ﻿l_simp_chinese:
 
 #其他
-xl_crisis_other_1:0 ""
+xl_crisis_other_1:0 "[event_target:xl_mid_crisis_main_empire_target.GetName]"
 xl_mid_crisis_fleet_1:0 "树骸污染舰队"
 #事件相关
 xl_crisis_1.3.title:0 "警告"
 xl_crisis_1.3.desc:0 "文案待补全"
 xl_crisis_1.3.a:0 "文案待补全"
+xl_crisis_1.3.b:0 "文案待补全"
 #天灾-主体
 xl_mid_crisis_main_empire_name:0 "树骸污染-[this.GetName]"
+xl_mid_crisis_empire_name:0 "树骸污染"
 #修正/加成
 xl_mid_crisis_main_empire_modifier:0 "树骸的力量"
 xl_mid_crisis_country_opinion_modifier:0 "天灾来袭"

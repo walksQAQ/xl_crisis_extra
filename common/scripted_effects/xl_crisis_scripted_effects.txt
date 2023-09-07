@@ -1,5 +1,6 @@
 #舰队生成
 xl_mid_crisis_fleet_create = {
+    #初始三支舰队
     if = {
         limit = {
             $MODE$ = 1
@@ -26,6 +27,30 @@ xl_mid_crisis_fleet_create = {
     else_if = {
         limit = {
             $MODE$ = 2
+        }
+    }
+    #雷场船
+    else_if = {
+        limit = {
+            $MODE$ = SP
+        }
+        create_fleet = {
+            name = xl_mid_crisis_fleet_sp
+            settings = {
+                can_upgrade = no
+                can_change_composition = no
+                is_boss = yes
+                uses_naval_capacity = no
+                spawn_debris = no
+            }
+            effect = {
+                set_fleet_flag = xl_mid_crisis_sp_fleet
+            }
+        }
+        last_created_fleet = {
+            create_ship = {
+
+            }
         }
     }
 }

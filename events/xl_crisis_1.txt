@@ -78,6 +78,9 @@ country_event = {
 		country_event = {
 			id = xl_crisis_fleet.1
 		}
+		country_event = {
+			id = xl_crisis_fleet.100
+		}
 		every_country = {
 			add_opinion_modifier = {
 				modifier = xl_mid_crisis_country_opinion_modifier
@@ -90,6 +93,34 @@ country_event = {
 			}
 		}
 		research_xl_mid_crisis_tech = yes
+		country_event = {
+			id = xl_crisis_1.4
+			days = 1440
+		}
+	}
+}
+
+#天灾第二阶段启动
+country_event = {
+	id = xl_crisis_1.4
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		AND = {
+			has_country_flag = xl_mid_crisis_country_main
+			has_global_flag = xl_mid_crisis_enabled
+			NOT = {
+				has_global_flag = xl_mid_crisis_stopped
+			}
+		}
+	}
+	immediate = {
+		set_name = {
+			key = xl_mid_crisis_empire_name
+			variable_string = "[this.GetName]"
+		}
+
 	}
 }
 
@@ -101,8 +132,16 @@ country_event = {
 	title = xl_crisis_1.3.title
 	desc = xl_crisis_1.3.desc
 
+	#开启净化事件
 	option = {
 		name = xl_crisis_1.3.a
+		country_event = {
+			id = xl_crisis_clear.1
+		}
+	}
+	#不开启净化事件
+	option = {
+		name = xl_crisis_1.3.b
 	}
 }
 
