@@ -7,8 +7,36 @@ country_event = {
 	is_triggered_only = yes
 
 	immediate = {
-		every_country = {
-			
+		random_country = {
+			if = {
+				limit = {
+					AND = {
+						is_ai = yes
+						is_fallen_empire = no
+					}
+				}
+				set_country_flag = xl_mid_crisis_country_main
+				country_event = {
+					id = xl_crisis_1.2
+					days = 10800
+				}
+			}
 		}
+	}
+}
+
+country_event = {
+	id = xl_crisis_1.2
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		AND = {
+			has_country_flag = xl_mid_crisis_country_main
+			has_global_flag = xl_mid_crisis_enabled
+		}
+	}
+	immediate = {
+
 	}
 }
