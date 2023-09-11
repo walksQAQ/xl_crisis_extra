@@ -8,6 +8,10 @@ xl_crisis_1.3.title:0 "警告"
 xl_crisis_1.3.desc:0 "文案待补全"
 xl_crisis_1.3.a:0 "文案待补全"
 xl_crisis_1.3.b:0 "文案待补全"
+xl_crisis_clear.2.title:0 "文案待补全"
+xl_crisis_clear.2.desc:0 "文案待补全"
+xl_crisis_clear.3.title:0 "文案待补全"
+xl_crisis_clear.3.desc:0 "文案待补全
 #天灾-主体
 xl_mid_crisis_main_empire_name:0 "树骸污染-[this.GetName]"
 xl_mid_crisis_empire_name:0 "树骸污染"
@@ -17,3 +21,5 @@ xl_mid_crisis_country_opinion_modifier:0 "天灾来袭"
 #传统
 xl_mid_crisis_species_trait:0 "树骸污染"
 xl_mid_crisis_species_trait_desc:0 "树骸污染产生的力量"
+#特殊项目
+xl_mid_crisis_purification_project_1:0 "净化项目-1"

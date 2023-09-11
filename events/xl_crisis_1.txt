@@ -6,6 +6,10 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 
+	trigger = {
+		has_global_flag = enabled_xl_mid_crisis
+	}
+
 	immediate = {
 		random_country = {
 			if = {
@@ -96,6 +100,9 @@ country_event = {
 		country_event = {
 			id = xl_crisis_1.4
 			days = 1440
+		}
+		country_event = {
+			id = xl_crisis_clear.1
 		}
 	}
 }

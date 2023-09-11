@@ -1,0 +1,17 @@
+special_project = {
+    key = xl_mid_crisis_purification_project_1
+    icon = "gfx/interface/icons/situation_log/situation_log_quest.dds"
+    picture = GFX_evt_glitchy_matrix
+    cost = {
+        multiply = 1
+        base = 1000
+    }
+    timelimit = -1
+    location = no
+    event_scope = country_event
+    on_success = {
+        country_event = {
+            id = xl_crisis_clear.3
+        }
+    }
+}

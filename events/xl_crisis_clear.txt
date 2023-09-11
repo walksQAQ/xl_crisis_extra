@@ -7,6 +7,30 @@ country_event = {
     is_triggered_only = yes
 
     immediate = {
-        
+        country_event = {
+            id = xl_crisis_clear.2
+        }
     }
+}
+
+country_event = {
+    id = xl_crisis_clear.2
+    is_triggered_only = yes
+    title = xl_crisis_clear.2.title
+    desc = xl_crisis_clear.2.desc
+
+    immediate = {
+        enable_special_project = {
+            name = xl_mid_crisis_purification_project_1
+            owner = this
+            location = this.
+        }
+    }
+}
+
+country_event = {
+    id = xl_crisis_clear.3
+    is_triggered_only = yes
+    title = xl_crisis_clear.3.title
+    desc = xl_crisis_clear.3.desc
 }
