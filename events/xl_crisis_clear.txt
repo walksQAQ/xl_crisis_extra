@@ -23,7 +23,7 @@ country_event = {
         enable_special_project = {
             name = xl_mid_crisis_purification_project_1
             owner = this
-            location = this.
+            location = this.capital
         }
     }
 }
