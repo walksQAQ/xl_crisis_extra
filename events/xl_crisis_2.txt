@@ -1,0 +1,31 @@
+namespace = xl_crisis_2
+
+#天灾第二阶段总触发
+country_event = {
+    id = xl_crisis_2.1
+    is_triggered_only = yes
+    hide_window = yes
+
+    immediate = {
+        country_event = {
+            id = xl_crisis_fleet.2
+        }
+        every_playable_country = {
+            country_event = {
+                id = xl_crisis_2.2
+            }
+        }
+    }
+}
+
+#警告事件
+country_event = {
+    id = xl_crisis_2.2
+    is_triggered_only = yes
+    title = xl_crisis_2.2.title
+    desc = xl_crisis_2.2.desc
+
+    option = {
+        name = xl_crisis_2.2.a
+    }
+}

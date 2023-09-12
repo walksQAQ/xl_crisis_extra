@@ -93,6 +93,9 @@ country_event = {
                     reduce_hp_percent = 100
                 }
             }
+            set_xl_crisis_fleet_location = {
+                TIME = 5
+            }
         }
     }
 }
@@ -129,5 +132,31 @@ country_event = {
 
     option = {
         name = xl_crisis_clear.8.a
+    }
+}
+
+#舰队强制调度
+country_event = {
+    id = xl_crisis_clear.9
+    is_triggered_only = yes
+    hide_window = yes
+
+    immediate = {
+        every_war = {
+            random_defender = {
+                capital_scope = {
+                    save_event_target_as = xl_crisis_clear_project_2_target
+                }
+            }
+        }
+        random_owned_fleet = {
+            limit = {
+                NOT = {
+                    has_fleet_flag = xl_crisis_fleet_event_moved
+                }
+            }
+            set_location = event_target:xl_crisis_clear_project_2_target
+            set_fleet_flag = xl_crisis_fleet_event_moved
+        }
     }
 }

@@ -28,6 +28,24 @@ xl_mid_crisis_fleet_create = {
         limit = {
             $MODE$ = 2
         }
+        create_fleet = {
+            name = xl_mid_crisis_fleet_2
+            settings = {
+                can_upgrade = no
+                can_change_composition = no
+                is_boss = yes
+                uses_naval_capacity = no
+                spawn_debris = no
+            }
+            effect = {
+                set_fleet_flag = is_xl_mid_crisis_event_create_fleet
+            }
+        }
+        last_created_fleet = {
+            create_ship = {
+
+            }
+        }
     }
     #雷场船
     else_if = {
@@ -70,6 +88,15 @@ xl_crisis_sp_project_start = {
             name = $PROJECT$
             owner = this
             location = event_target:xl_crisis_clear_sp_project_target
+        }
+    }
+}
+
+set_xl_crisis_fleet_location = {
+    while = {
+        count = $TIME$
+        country_event = {
+            id = xl_crisis_clear.9
         }
     }
 }

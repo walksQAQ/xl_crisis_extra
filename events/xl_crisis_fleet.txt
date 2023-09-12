@@ -29,7 +29,30 @@ country_event = {
     }
 }
 
-#舰船生成
+#第二阶段舰队触发
+country_event = {
+    id = xl_crisis_fleet.2
+    is_triggered_only = yes
+    hide_window = yes
+
+    trigger = {
+        AND = {
+            has_country_flag = xl_mid_crisis_country_main
+        }
+    }
+
+    immediate = {
+        country_event = {
+            id = xl_crisis_fleet.2
+            days = 360
+        }
+        country_event = {
+            id = xl_crisis_fleet.11
+        }
+    }
+}
+
+#初始阶段舰船生成
 country_event = {
     id = xl_crisis_fleet.10
     hide_window = yes
@@ -46,6 +69,20 @@ country_event = {
     }
 }
 
+#第二阶段舰队生成
+country_event = {
+    id = xl_crisis_fleet.11
+    is_triggered_only = yes
+    hide_window = yes
+
+    immediate = {
+        xl_mid_crisis_fleet_create = {
+            MODE = 2
+        }
+    }
+}
+
+#雷场船生成
 country_event = {
     id = xl_crisis_fleet.100
     hide_window = yes
