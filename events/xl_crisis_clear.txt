@@ -13,6 +13,7 @@ country_event = {
     }
 }
 
+#启动净化项目第一部分
 country_event = {
     id = xl_crisis_clear.2
     is_triggered_only = yes
@@ -20,17 +21,113 @@ country_event = {
     desc = xl_crisis_clear.2.desc
 
     immediate = {
-        enable_special_project = {
-            name = xl_mid_crisis_purification_project_1
-            owner = this
-            location = this.capital
+        xl_crisis_sp_project_start = {
+            PROJECT = xl_mid_crisis_purification_project_1
         }
+
     }
 }
 
+#启动净化项目第二部分
 country_event = {
     id = xl_crisis_clear.3
     is_triggered_only = yes
     title = xl_crisis_clear.3.title
     desc = xl_crisis_clear.3.desc
+
+    immediate = {
+        xl_crisis_sp_project_start = {
+            PROJECT = xl_mid_crisis_purification_project_2
+        }
+    }
+    option = {
+        name = xl_crisis_clear.3.a
+    }
+}
+
+#净化项目第一部分结算
+country_event = {
+    id = xl_crisis_clear.4
+    is_triggered_only = yes
+    hide_window = yes
+
+    immediate = {
+        event_target:xl_mid_crisis_main_empire_target = {
+            remove_modifier = xl_mid_crisis_main_empire_modifier
+        }
+    }
+}
+
+#启动净化项目第三部分
+country_event = {
+    id = xl_crisis_clear.5
+    is_triggered_only = yes
+    title = xl_crisis_clear.5.title
+    desc = xl_crisis_clear.5.desc
+
+    immediate = {
+        xl_crisis_sp_project_start = {
+            PROJECT = xl_mid_crisis_purification_project_3
+        }
+    }
+    option = {
+        name = xl_crisis_clear.5.a
+    }
+}
+
+#净化项目第二部分结算
+country_event = {
+    id = xl_crisis_clear.6
+    is_triggered_only = yes
+    hide_window = yes
+
+    immediate = {
+        event_target:xl_mid_crisis_main_empire_target = {
+            every_owned_fleet = {
+                limit = {
+                    NOT = {
+                        has_fleet_flag = is_xl_mid_crisis_event_create_fleet
+                    }
+                }
+                every_owned_ship = {
+                    reduce_hp_percent = 100
+                }
+            }
+        }
+    }
+}
+
+#净化项目第三部分结算
+country_event = {
+    id = xl_crisis_clear.7
+    is_triggered_only = yes
+    title = xl_crisis_clear.7.title
+    desc = xl_crisis_clear.7.desc
+
+    option = {
+        name = xl_crisis_clear.7.a
+    }
+    immediate = {
+        set_global_flag = xl_mid_crisis_stopped
+        every_owned_fleet = {
+            limit = {
+                has_fleet_flag = is_xl_mid_crisis_event_create_fleet
+            }
+            every_owned_ship = {
+                reduce_hp_percent = 100
+            }
+        }
+    }
+}
+
+#净化项目失败
+country_event = {
+    id = xl_crisis_clear.8
+    is_triggered_only = yes
+    title = xl_crisis_clear.8.title
+    desc = xl_crisis_clear.8.desc
+
+    option = {
+        name = xl_crisis_clear.8.a
+    }
 }

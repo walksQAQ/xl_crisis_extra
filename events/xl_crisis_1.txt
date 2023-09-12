@@ -65,6 +65,7 @@ country_event = {
 				id = xl_crisis_1.3
 			}
 		}
+		set_global_flag = can_stop_xl_mid_crisis
 		set_variable = {
 			which = xl_mid_crisis_start_fleet_time
 			value = 0
@@ -99,7 +100,7 @@ country_event = {
 		research_xl_mid_crisis_tech = yes
 		country_event = {
 			id = xl_crisis_1.4
-			days = 1440
+			days = 3600
 		}
 		country_event = {
 			id = xl_crisis_clear.1
@@ -127,7 +128,7 @@ country_event = {
 			key = xl_mid_crisis_empire_name
 			variable_string = "[this.GetName]"
 		}
-
+		remove_global_flag = can_stop_xl_mid_crisis
 	}
 }
 

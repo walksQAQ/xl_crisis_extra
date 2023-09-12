@@ -44,6 +44,7 @@ xl_mid_crisis_fleet_create = {
                 spawn_debris = no
             }
             effect = {
+                set_fleet_flag = is_xl_mid_crisis_event_create_fleet
                 set_fleet_flag = xl_mid_crisis_sp_fleet
             }
         }
@@ -58,4 +59,17 @@ xl_mid_crisis_fleet_create = {
 #天灾科技赋予
 research_xl_mid_crisis_tech = {
 
+}
+
+xl_crisis_sp_project_start = {
+    capital_scope = {
+        solar_system = {
+            save_event_target_as = xl_crisis_clear_sp_project_target
+        }
+        enable_special_project = {
+            name = $PROJECT$
+            owner = this
+            location = event_target:xl_crisis_clear_sp_project_target
+        }
+    }
 }

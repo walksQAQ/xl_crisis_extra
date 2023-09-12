@@ -9,9 +9,71 @@ special_project = {
     timelimit = -1
     location = no
     event_scope = country_event
+    abort_trigger = {
+        has_global_flag = can_stop_xl_mid_crisis
+    }
     on_success = {
         country_event = {
             id = xl_crisis_clear.3
+            id = xl_crisis_clear.4
+        }
+    }
+    on_fail = {
+        country_event = {
+            id = xl_crisis_clear.8
+        }
+    }
+}
+
+special_project = {
+    key = xl_mid_crisis_purification_project_2
+    icon = "gfx/interface/icons/situation_log/situation_log_quest.dds"
+    picture = GFX_evt_glitchy_matrix
+    cost = {
+        multiply = 1
+        base = 1000
+    }
+    timelimit = -1
+    location = no
+    event_scope = country_event
+    abort_trigger = {
+        has_global_flag = can_stop_xl_mid_crisis
+    }
+    on_success = {
+        country_event = {
+            id = xl_crisis_clear.5
+            id = xl_crisis_clear.6
+        }
+    }
+    on_fail = {
+        country_event = {
+            id = xl_crisis_clear.8
+        }
+    }
+}
+
+special_project = {
+    key = xl_mid_crisis_purification_project_3
+    icon = "gfx/interface/icons/situation_log/situation_log_quest.dds"
+    picture = GFX_evt_glitchy_matrix
+    cost = {
+        multiply = 1
+        base = 1000
+    }
+    timelimit = -1
+    location = no
+    event_scope = country_event
+    abort_trigger = {
+        has_global_flag = can_stop_xl_mid_crisis
+    }
+    on_success = {
+        country_event = {
+            id = xl_crisis_clear.7
+        }
+    }
+    on_fail = {
+        country_event = {
+            id = xl_crisis_clear.8
         }
     }
 }
