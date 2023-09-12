@@ -15,6 +15,9 @@ country_event = {
                 id = xl_crisis_2.2
             }
         }
+        country_event = {
+            id = xl_crisis_2.3
+        }
     }
 }
 
@@ -27,5 +30,36 @@ country_event = {
 
     option = {
         name = xl_crisis_2.2.a
+    }
+}
+
+#天灾第二阶段触发
+country_event = {
+    id = xl_crisis_2.3
+    is_triggered_only = yes
+    hide_window = yes
+
+    immediate = {
+        every_owned_fleet = {
+            limit = {
+                NOT = {
+                    any_owned_ship = {
+                        has_component =
+                    }
+                }
+            }
+            set_variable = {
+                which = fleets_about_no_crisis_tech
+                value = trigger:count_owned_ship
+            }
+            xl_crisis_create_ships = yes
+            every_owned_ship = {
+                reduce_hp_percent = 100
+            }
+        }
+        xl_mid_crisis_fleet_create = {
+            MODE = 2
+        }
+
     }
 }

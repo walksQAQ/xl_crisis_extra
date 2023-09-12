@@ -6,7 +6,7 @@ xl_mid_crisis_fleet_create = {
             $MODE$ = 1
         }
         create_fleet = {
-            name = xl_mid_crisis_fleet_1
+            name = random
             settings = {
                 can_upgrade = no
                 can_change_composition = no
@@ -20,7 +20,9 @@ xl_mid_crisis_fleet_create = {
         }
         last_created_fleet = {
             create_ship = {
-
+                name = random
+                design = NAME_qixingzhe_2
+                upgradable = no
             }
         }
     }
@@ -29,7 +31,7 @@ xl_mid_crisis_fleet_create = {
             $MODE$ = 2
         }
         create_fleet = {
-            name = xl_mid_crisis_fleet_2
+            name = random
             settings = {
                 can_upgrade = no
                 can_change_composition = no
@@ -43,7 +45,9 @@ xl_mid_crisis_fleet_create = {
         }
         last_created_fleet = {
             create_ship = {
-
+                name = random
+                design = NAME_qixingzhe_2
+                upgradable = no
             }
         }
     }
@@ -68,7 +72,9 @@ xl_mid_crisis_fleet_create = {
         }
         last_created_fleet = {
             create_ship = {
-
+                name = random
+                design = NAME_qixingzhe_2
+                upgradable = no
             }
         }
     }
@@ -97,6 +103,18 @@ set_xl_crisis_fleet_location = {
         count = $TIME$
         country_event = {
             id = xl_crisis_clear.9
+        }
+    }
+}
+
+#第二阶段舰队数量更新
+xl_crisis_create_ships = {
+    while = {
+        count = fleets_about_no_crisis_tech
+        create_ship = {
+            name = random
+            design = NAME_qixingzhe_2
+            upgradable = no
         }
     }
 }
