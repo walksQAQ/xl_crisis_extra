@@ -19,6 +19,10 @@ xl_mid_crisis_fleet_create = {
             }
         }
         last_created_fleet = {
+            set_variable = {
+                which = kill_enemy
+                value = 0
+            }
             solar_system = {
                 set_variable = {
                     which = xl_crisis_fleet_control_fleet_id
@@ -50,6 +54,10 @@ xl_mid_crisis_fleet_create = {
             }
         }
         last_created_fleet = {
+            set_variable = {
+                which = kill_enemy
+                value = 0
+            }
             solar_system = {
                 set_variable = {
                     which = xl_crisis_fleet_control_fleet_id
@@ -83,6 +91,10 @@ xl_mid_crisis_fleet_create = {
             }
         }
         last_created_fleet = {
+            set_variable = {
+                which = kill_enemy
+                value = 0
+            }
             solar_system = {
                 set_variable = {
                     which = xl_crisis_fleet_control_fleet_id

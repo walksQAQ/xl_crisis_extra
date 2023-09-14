@@ -61,3 +61,32 @@ country_event = {
         }
     }
 }
+country_event = {
+    id = xl_crisis_price.201
+    is_triggered_only = yes
+    hide_window = yes
+
+    trigger = {
+        fromfrom = {
+            AND = {
+                has_fleet_flag = is_xl_mid_crisis_event_create_fleet
+                has_fleet_flag = xl_mid_crisis_sp_fleet
+            }
+            owner = {
+                OR = {
+                    is_country_type = xl_crisis_main_empire_name_save
+                    is_country_type = xl_crisis_empire
+                }
+            }
+        }
+    }
+
+    immediate = {
+        fromfrom = {
+            change_variable = {
+                which = kill_enemy
+                value = 5
+            }
+        }
+    }
+}

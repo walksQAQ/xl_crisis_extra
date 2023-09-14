@@ -19,5 +19,6 @@ on_fleet_enter_orbit = {
 on_fleet_destroyed_victim = {
     events = {
         xl_crisis_price.20
+        xl_crisis_price.201
     }
 }
