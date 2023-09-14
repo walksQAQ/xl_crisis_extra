@@ -1,0 +1,244 @@
+namespace = xl_crisis_fleet_control
+
+#舰队控制事件激活
+fleet_event = {
+    id = xl_crisis_fleet_control.1
+    is_triggered_only = yes
+    hide_window = yes
+
+    immediate = {
+        if = {
+            limit = {
+                is_scope_type = fleet
+            }
+            set_variable = {
+                which = "fleet_id"
+                value = owner.fleetid
+            }
+            set_fleet_flag = is_xl_crisis_fleet
+        }
+        fleet_event = {
+            id = xl_crisis_fleet_control.40
+        }
+    }
+}
+
+#舰队寻路启动（copy from SRA）
+fleet_event = {
+    id = xl_crisis_fleet_control.40
+    hide_window = yes
+    is_triggered_only = yes
+    trigger = {
+        exists = this
+        is_xl_mid_crisis_ship = yes
+        owner = {
+            is_country_type = xl_crisis_empire
+        }
+    }
+    immediate = {
+        queue_actions = {
+            repeat = {
+                effect = {
+                    id = xl_crisis_fleet_control.40.e0
+                    if = {
+                        limit = { count_system = {
+                            limit = { check_variable = { which = xl_crisis_fleet_control_fleet_id value > 0 } }
+                            count = all
+                        } }
+                        every_system = {
+                            set_variable = { which = xl_crisis_fleet_control_fleet_id value = 0 }
+                            clear_variable = xl_crisis_fleet_control_fleet_id
+                        }
+                    }
+                    if = {
+                        limit = {
+                            has_fleet_flag = xl_crisis_fleet_control_cannot_find_path
+                        }
+                        random_system = {
+                            limit = {
+                                OR = {
+                                    AND = {
+                                        exists = starbase
+                                        starbase = { owner = { is_hostile = root.owner } }
+                                    }
+                                    any_system_planet = { OR = { is_colony = yes is_colonizable = yes } }
+                                }
+                            }
+                            random_system_planet = { ROOT = { set_location = { target = PREV distance = 5 angle = random } } }
+                        }
+                        remove_fleet_flag = xl_crisis_fleet_control_cannot_find_path
+                    }
+                }
+                find_closest_system = {
+                    trigger = {
+                        id = xl_crisis_fleet_control.40.t1
+                        OR = {
+                            AND = {
+                                exists = starbase
+                                starbase = { owner = { is_hostile = root.owner } }
+                            }
+                            any_system_planet = { OR = { is_colony = yes is_colonizable = yes } }
+                        }
+                        ROOT = { can_access_system = prev }
+                        check_variable = { which = xl_crisis_fleet_control_fleet_id value < 1 }
+                    }
+                    found_system = {
+                        effect = {
+                            id = xl_crisis_fleet_control.40.e1
+                            set_variable = { which = xl_crisis_fleet_control_fleet_id value = root.fleet_id }
+                        }
+                        move_to = this
+                        repeat = {
+                            while = {
+                                id = xl_crisis_fleet_control.40.t2
+                                any_system_planet = { OR = { is_colony = yes is_colonizable = yes } }
+                            }
+                            find_closest_planet = {
+                                trigger = {
+                                    id = xl_crisis_fleet_control.40.t3
+                                    OR = { is_colony = yes is_colonizable = yes }
+                                }
+                                found_planet = {
+                                    orbit_planet = this
+                                    effect = {
+                                        id = xl_crisis_fleet_control.40.e2
+                                        ROOT = { set_fleet_flag = xl_crisis_fleet_control_bombarding_planet }
+                                        if = {
+                                            #未殖民宜居星球过1个月炸掉
+                                            limit = { is_colony = no is_colonizable = yes }
+                                            set_planet_flag = xl_crisis_fleet_control_target_planet
+                                            planet_event = { id = xl_crisis_fleet_control.41 days = 30 }
+                                        }
+                                        if = {
+                                            #已殖民宜居星球过3个月炸掉
+                                            limit = { is_colony = yes is_colonizable = yes }
+                                            set_planet_flag = xl_crisis_fleet_control_target_planet
+                                            planet_event = { id = xl_crisis_fleet_control.41 days = 90 }
+                                        }
+                                        if = {
+                                            #高难度下炸球后概率跃迁
+                                            limit = {
+                                                has_global_flag = xl_crisis_fleet_control_lunatic
+                                            }
+                                            random = {
+                                                chance = 5
+                                                ROOT = { set_fleet_flag = xl_crisis_fleet_control_cannot_find_path }
+                                            }
+                                        }
+                                    }
+                                    repeat = {
+                                        while = {
+                                            id = xl_crisis_fleet_control.40.t4
+                                            ROOT = { has_fleet_flag = xl_crisis_fleet_control_bombarding_planet }
+                                        }
+                                        effect = {
+                                            id = xl_crisis_fleet_control.40.e3
+                                            if = {
+                                                limit = { is_colony = no is_colonizable = no }
+                                                ROOT = { remove_fleet_flag = xl_crisis_fleet_control_bombarding_planet }
+                                            }
+                                        }
+                                        wait = { duration = 5 random = 10 }
+                                    }
+                                }
+                            }
+                            move_to = this							# move away from the planet
+                            wait = { duration = 5 random = 10 }
+                        }
+                        wait = { duration = 5 random = 10 }
+                    }
+                    failed = { find_closest_system = {
+                        trigger = {
+                            id = xl_crisis_fleet_control.40.t9
+                            ROOT = { can_access_system = prev }
+                            check_variable = { which = xl_crisis_fleet_control_fleet_id value < 1 }
+                        }
+                        found_system = {
+                            effect = {
+                                id = xl_crisis_fleet_control.40.t91
+                                set_variable = { which = xl_crisis_fleet_control_fleet_id value = root.fleet_id }
+                            }
+                            move_to = this
+                            repeat = {
+                                while = {
+                                    id = xl_crisis_fleet_control.40.t10
+                                    any_system_planet = { OR = { is_colony = yes is_colonizable = yes } }
+                                }
+                                find_closest_planet = {
+                                    trigger = {
+                                        id = xl_crisis_fleet_control.40.t11
+                                        OR = { is_colony = yes is_colonizable = yes }
+                                    }
+                                    found_planet = {
+                                        orbit_planet = this
+                                        effect = {
+                                            id = xl_crisis_fleet_control.40.e10
+                                            ROOT = { set_fleet_flag = xl_crisis_fleet_control_bombarding_planet }
+                                            if = {
+                                                limit = { is_colony = no is_colonizable = yes }
+                                                set_planet_flag = xl_crisis_fleet_control_target_planet
+                                                planet_event = { id = xl_crisis_fleet_control.41 days = 30 }
+                                            }
+                                        }
+                                        repeat = {
+                                            while = {
+                                                id = xl_crisis_fleet_control.40.t12
+                                                ROOT = { has_fleet_flag = xl_crisis_fleet_control_bombarding_planet }
+                                            }
+                                            effect = {
+                                                id = xl_crisis_fleet_control.40.e11
+                                                if = {
+                                                    limit = { is_colony = no is_colonizable = no }
+                                                    ROOT = { remove_fleet_flag = xl_crisis_fleet_control_bombarding_planet }
+                                                }
+                                            }
+                                            wait = { duration = 5 random = 10 }
+                                        }
+                                    }
+                                }
+                                move_to = this											# move away from the planet
+                                wait = { duration = 5 random = 10 }
+                            }
+                            wait = { duration = 5 random = 10 }
+                        }
+                        failed = { effect = { id = xl_crisis_fleet_control.40.e13 ROOT = { set_fleet_flag = xl_crisis_fleet_control_cannot_find_path } } wait = 200 }
+                    } }
+                }
+            }
+        }
+    }
+}
+
+#舰队轰炸事件
+planet_event = {
+    id = xl_crisis_fleet_control.41
+    is_triggered_only = yes
+    hide_window = yes
+    trigger = {
+        AND = {
+            is_colonizable = yes
+            any_fleet_in_orbit = {
+                owner = {
+                    NOT = {
+                        is_country_type = xl_crisis_empire
+                    }
+                }
+                has_fleet_flag = is_xl_crisis_fleet
+            }
+        }
+    }
+    immediate = {
+        reset_planet = yes
+        clear_planet_modifiers = yes
+        destroy_colony = yes
+        change_pc = {
+            class = pc_fake_gaia
+            inherit_entity = yes
+        }
+    }
+    after = {
+        create_colony = {
+            owner = event_target:xl_mid_crisis_main_empire_target
+        }
+    }
+}

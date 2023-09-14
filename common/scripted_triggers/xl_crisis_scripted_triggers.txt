@@ -1,0 +1,7 @@
+is_xl_mid_crisis_ship = {
+    NOT = {
+        any_owned_ship = {
+            has_component = star_tree_T
+        }
+    }
+}

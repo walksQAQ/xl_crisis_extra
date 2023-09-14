@@ -42,11 +42,7 @@ country_event = {
     immediate = {
         every_owned_fleet = {
             limit = {
-                NOT = {
-                    any_owned_ship = {
-                        has_component =
-                    }
-                }
+                is_xl_mid_crisis_ship = yes
             }
             set_variable = {
                 which = fleets_about_no_crisis_tech
@@ -54,12 +50,16 @@ country_event = {
             }
             xl_crisis_create_ships = yes
             every_owned_ship = {
+                limit = {
+                    is_xl_mid_crisis_ship = yes
+                }
                 reduce_hp_percent = 100
             }
         }
         xl_mid_crisis_fleet_create = {
             MODE = 2
         }
-
+        set_country_type = xl_crisis_empire
+        set_every_crisis_fleet_controller_to_event = yes
     }
 }

@@ -38,3 +38,7 @@ xl_mid_crisis_species_trait_desc:0 "树骸污染产生的力量"
 xl_mid_crisis_purification_project_1:0 "净化项目-1"
 xl_mid_crisis_purification_project_2:0 "净化项目-2"
 xl_mid_crisis_purification_project_3:0 "净化项目-3"
+#星球
+pc_fake_gaia:0 "$pc_gaia$"
+pc_fake_gaia_desc:0 "$pc_gaia_desc$"
+mod_pc_fake_gaia_habitability:0 "$mod_pc_gaia_habitability$"

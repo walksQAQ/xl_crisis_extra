@@ -19,6 +19,12 @@ xl_mid_crisis_fleet_create = {
             }
         }
         last_created_fleet = {
+            solar_system = {
+                set_variable = {
+                    which = xl_crisis_fleet_control_fleet_id
+                    value = prev.fleet_id
+                }
+            }
             create_ship = {
                 name = random
                 design = NAME_qixingzhe_2
@@ -44,6 +50,12 @@ xl_mid_crisis_fleet_create = {
             }
         }
         last_created_fleet = {
+            solar_system = {
+                set_variable = {
+                    which = xl_crisis_fleet_control_fleet_id
+                    value = prev.fleet_id
+                }
+            }
             create_ship = {
                 name = random
                 design = NAME_qixingzhe_2
@@ -71,6 +83,12 @@ xl_mid_crisis_fleet_create = {
             }
         }
         last_created_fleet = {
+            solar_system = {
+                set_variable = {
+                    which = xl_crisis_fleet_control_fleet_id
+                    value = prev.fleet_id
+                }
+            }
             create_ship = {
                 name = random
                 design = NAME_qixingzhe_2
@@ -115,6 +133,15 @@ xl_crisis_create_ships = {
             name = random
             design = NAME_qixingzhe_2
             upgradable = no
+        }
+    }
+}
+
+#移交天灾舰队控制权
+set_every_crisis_fleet_controller_to_event = {
+    every_owned_ship = {
+        fleet_event = {
+            id = xl_crisis_fleet_control.1
         }
     }
 }
