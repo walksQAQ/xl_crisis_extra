@@ -11,6 +11,25 @@ country_event = {
 	}
 
 	immediate = {
+		every_owned_fleet = {
+			set_variable = {
+				which = kill_enemy
+				value = 0
+			}
+			limit = {
+				NOT = {
+					any_owned_ship = {
+						has_component = star_tree_T
+					}
+				}
+			}
+			add_modifier = {
+				modifier = xl_crisis_powered
+				multiplier = kill_enemy
+				clear_on_owner_change = yes
+			}
+
+		}
 		random_country = {
 			if = {
 				limit = {
@@ -64,6 +83,11 @@ country_event = {
 			country_event = {
 				id = xl_crisis_1.3
 			}
+			declare_war = {
+				target = event_target:xl_mid_crisis_main_empire_target
+				attacker_war_goal = wg_cleansing
+			}
+			save_global_event_target_as = xl_crisis_player
 		}
 		set_global_flag = can_stop_xl_mid_crisis
 		set_variable = {
@@ -91,14 +115,7 @@ country_event = {
 				modifier = xl_mid_crisis_country_opinion_modifier
 				who = event_target:xl_mid_crisis_main_empire_target
 			}
-			set_war_goal = {
-				type = xl_mid_crisis_war_type
-				target = this
-				enemy = event_target:xl_mid_crisis_main_empire_target
-			}
-			country_event = {
-				id = xl_crisis_1.3
-			}
+			join_war = event_target:xl_crisis_player
 		}
 		research_xl_mid_crisis_tech = yes
 		country_event = {
@@ -149,7 +166,7 @@ country_event = {
 			key = xl_mid_crisis_empire_name
 			variable_string = "[this.GetName]"
 		}
-		remove_global_flag = can_stop_xl_mid_crisis
+			remove_global_flag = can_stop_xl_mid_crisis
 		country_event = {
 			id = xl_crisis_2.1
 		}

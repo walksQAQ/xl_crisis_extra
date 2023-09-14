@@ -30,6 +30,7 @@ xl_mid_crisis_main_empire_name:0 "树骸污染-[this.GetName]"
 xl_mid_crisis_empire_name:0 "树骸污染"
 #修正/加成
 xl_mid_crisis_main_empire_modifier:0 "树骸的力量"
+xl_crisis_powered:0 "树骸的力量"
 xl_mid_crisis_country_opinion_modifier:0 "天灾来袭"
 #传统
 xl_mid_crisis_species_trait:0 "树骸污染"

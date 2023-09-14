@@ -1,3 +1,7 @@
 xl_mid_crisis_main_empire_modifier = {
 
 }
+
+xl_crisis_powered = {
+
+}

@@ -142,10 +142,18 @@ country_event = {
     hide_window = yes
 
     immediate = {
-        every_war = {
-            random_defender = {
+        random_war = {
+            limit = {
+                any_war_participant = {
+                    OR = {
+                        is_country_type = xl_crisis_main_empire_name_save
+                        is_country_type = xl_crisis_empire
+                    }
+                }
+            }
+            random_war_participant = {
                 capital_scope = {
-                    save_event_target_as = xl_crisis_clear_project_2_target
+                    save_event_target_as = xl_crisis_fleet_attack_target
                 }
             }
         }
@@ -155,7 +163,7 @@ country_event = {
                     has_fleet_flag = xl_crisis_fleet_event_moved
                 }
             }
-            set_location = event_target:xl_crisis_clear_project_2_target
+            set_location = event_target:xl_crisis_fleet_attack_target
             set_fleet_flag = xl_crisis_fleet_event_moved
         }
     }

@@ -107,13 +107,13 @@ fleet_event = {
                                             #未殖民宜居星球过1个月炸掉
                                             limit = { is_colony = no is_colonizable = yes }
                                             set_planet_flag = xl_crisis_fleet_control_target_planet
-                                            planet_event = { id = xl_crisis_fleet_control.41 days = 30 }
+                                            planet_event = { id = xl_crisis_fleet_control.41 days = 60 }
                                         }
                                         if = {
                                             #已殖民宜居星球过3个月炸掉
                                             limit = { is_colony = yes is_colonizable = yes }
                                             set_planet_flag = xl_crisis_fleet_control_target_planet
-                                            planet_event = { id = xl_crisis_fleet_control.41 days = 90 }
+                                            planet_event = { id = xl_crisis_fleet_control.41 days = 120 }
                                         }
                                         if = {
                                             #高难度下炸球后概率跃迁
@@ -177,7 +177,7 @@ fleet_event = {
                                             if = {
                                                 limit = { is_colony = no is_colonizable = yes }
                                                 set_planet_flag = xl_crisis_fleet_control_target_planet
-                                                planet_event = { id = xl_crisis_fleet_control.41 days = 30 }
+                                                planet_event = { id = xl_crisis_fleet_control.41 days = 120 }
                                             }
                                         }
                                         repeat = {
@@ -240,5 +240,25 @@ planet_event = {
         create_colony = {
             owner = event_target:xl_mid_crisis_main_empire_target
         }
+    }
+}
+
+#入轨时生成陆军
+fleet_event = {
+    id = xl_crisis_fleet_control.401
+    hide_window = yes
+    is_triggered_only = yes
+
+    trigger = {
+        this.owner = {
+            OR = {
+                is_country_type = xl_crisis_empire
+                is_country_type = xl_crisis_main_empire_name_save
+            }
+        }
+    }
+
+    immediate = {
+
     }
 }

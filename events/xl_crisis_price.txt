@@ -1,0 +1,63 @@
+namespace = xl_crisis_price
+
+#事件链结束奖励
+country_event = {
+    id = xl_crisis_price.10
+    is_triggered_only = yes
+    hide_window = yes
+
+    trigger = {
+        has_global_flag = can_stop_xl_mid_crisis
+    }
+
+    immediate = {
+
+    }
+}
+
+#击败奖励
+country_event = {
+    id = xl_crisis_price.11
+    is_triggered_only = yes
+    hide_window = yes
+
+    trigger = {
+        has_global_flag = can_stop_xl_mid_crisis
+    }
+
+    immediate = {
+
+    }
+}
+
+#天灾所属舰队击败奖励
+country_event = {
+    id = xl_crisis_price.20
+    is_triggered_only = yes
+    hide_window = yes
+
+    trigger = {
+        fromfrom = {
+            any_owned_ship = {
+                NOT = {
+                    has_component = star_tree_T
+                }
+            }
+            owner = {
+                OR = {
+                    is_country_type = xl_crisis_main_empire_name_save
+                    is_country_type = xl_crisis_empire
+                }
+            }
+        }
+    }
+
+    immediate = {
+        fromfrom = {
+            change_variable = {
+                which = kill_enemy
+                value = 1
+            }
+        }
+    }
+}

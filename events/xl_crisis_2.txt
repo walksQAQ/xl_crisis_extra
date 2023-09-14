@@ -33,7 +33,7 @@ country_event = {
     }
 }
 
-#天灾第二阶段触发
+#天灾第二阶段启动
 country_event = {
     id = xl_crisis_2.3
     is_triggered_only = yes

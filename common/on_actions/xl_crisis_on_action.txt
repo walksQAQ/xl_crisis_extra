@@ -3,3 +3,21 @@ on_mid_game_pulse_country = {
         xl_crisis_1.1
     }
 }
+
+on_country_destroyed = {
+    events = {
+        xl_crisis_price.11
+    }
+}
+
+on_fleet_enter_orbit = {
+    events = {
+        xl_crisis_fleet_control.401
+    }
+}
+
+on_fleet_destroyed_victim = {
+    events = {
+        xl_crisis_price.20
+    }
+}

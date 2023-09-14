@@ -69,6 +69,7 @@ special_project = {
     on_success = {
         country_event = {
             id = xl_crisis_clear.7
+            id = xl_crisis_price.10
         }
     }
     on_fail = {
